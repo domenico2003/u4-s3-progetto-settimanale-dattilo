@@ -16,6 +16,7 @@ public class Main {
 		ArchivioDAO ad = new ArchivioDAO(emf);
 		UserDAO ud = new UserDAO(emf);
 		PrestitoDAO pd = new PrestitoDAO(emf);
+
 //ESERCIZIO 1
 //		Libro lib = new Libro("S.W.A.T.", 2017, 500, "Shawn Ryan", "poliziesco");
 //		Rivista riv = new Rivista("tutto a caso", 2023, 100, Periodicita.semestrale);
@@ -66,9 +67,14 @@ public class Main {
 
 		// SVOLGIMENTO ESERCIZIO 7
 
+		// ad.elementiInPrestitoPerUtente(1232).stream().forEach(el ->
+		// log.info(el.toString()));
+
 //ESERCIZIO 8
 		// ad.prestitiScadutiNonRestituiti().stream().forEach(pr ->
 		// log.info(pr.toString()));
+
+//*************************###TUTTI GLI ESERCIZI FUNZIONANO CORRETTAMENTE###************************
 		emf.close();
 	}
 

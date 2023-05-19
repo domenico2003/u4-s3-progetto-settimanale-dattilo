@@ -114,4 +114,20 @@ public class ArchivioDAO {
 		em.close();
 		return risposta;
 	}
+
+	public List<Elemento> elementiInPrestitoPerUtente(int numeroDiTessera) {
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction t = em.getTransaction();
+		t.begin();
+		Query q = em.createQuery(
+				"SELECT p FROM Prestito p JOIN User u ON p.utente= u.id WHERE u.numeroDiTessera = :tessera AND p.DataRestituzioneEffettiva IS NULL");
+
+		q.setParameter("tessera", numeroDiTessera);
+
+		List<Prestito> risposta = q.getResultList();
+		List<Elemento> rispEl = risposta.stream().map(ri -> ri.getElementoPrestato()).toList();
+		t.commit();
+		em.close();
+		return rispEl;
+	}
 }
